@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+}
+
+nav {
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 5rem;
+    font-size: 1.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: rgb(153, 124, 181);
+    font-weight: bold;
+}
+
+/* POSITION RELATIVE IS NEEDED IN ORDER FOR "absolute" to work on .active-nav */
+.nav-item {
+    position: relative;
+    border-radius: 3rem;
+    
+}
+
+/* POSITION ABSOLUTE IN ORDER TO MOVE AROUND FROM LINK TO LINK WITHOUT JUMP */
+.active-nav {
+    height: 3px;
+    background: wheat;
+    border-radius: 3em;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 100%;
+}
+
+section {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 3rem;
+    margin: 5rem 15rem;
+}
+
+.card {
+    
+    height: 15rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(218, 224, 156);
+    /* HAVE EACH CARD SPACE OUT 3/6 SPACES */
+    grid-column: span 3;
+    font-size: 1.2rem;
+    padding: 2rem;
+    
+    /* box shadow - X, Y, blue, background color  */
+    box-shadow: 0.7rem 0.7rem 1rem rgb(153, 124, 181);
+    border: 4px solid rgb(121, 129, 34);
+    gap: 1rem;
+}
+
+.card.active {
+    /* take off the whole column - start off at 6 & finish at 6 */
+    grid-column: 1 / span 6;
+    grid-row: 1;
+    /* index position 0 */
+    order:0;
+    height: auto;
+}
+
+
+.card.is-inactive {
+    /* space out by span 2 to have all 3 cards add up to 6 */
+    grid-column: span 2;
+}
+
+
+.card p {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    display: none;
+}
+
+.card.active p {
+    display: block;
+}
+
